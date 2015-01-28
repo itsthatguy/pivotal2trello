@@ -5,3 +5,7 @@ ruby "2.1.5"
 gem "dotenv"
 gem "pivotal-tracker"
 gem "ruby-trello"
+
+group :development do
+  gem 'pry'
+end
