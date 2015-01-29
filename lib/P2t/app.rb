@@ -17,7 +17,7 @@ module P2t
 
     def pivotal_cards
       @pivotal.cards({label: 'front-end'}).map { |card|
-        PivotalCard.new(card.id, card)
+        PivotalCard.new(card)
       }.compact
     end
 

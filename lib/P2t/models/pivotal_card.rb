@@ -2,7 +2,7 @@ module P2t
   class PivotalCard < Card
     attr_accessor :attributes
 
-    def initialize(id, card)
+    def initialize(card)
       super
       @attributes = {name: card.name,
                      desc: card.description,

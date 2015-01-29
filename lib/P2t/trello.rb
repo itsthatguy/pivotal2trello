@@ -7,6 +7,9 @@ module P2t
   class Trello
     def initialize(key, token)
       @client = ::Trello::Client.new(developer_public_key: key, member_token: token)
+      @defaults = {"name"    => "New Card",
+                   "idList"  => "54c99f5d882aa198c2723e78",
+                   "idBoard" => ENV["TRELLO_BOARD_ID"]}
     end
 
     def client
@@ -19,7 +22,7 @@ module P2t
 
     def cards
       @cards = board.cards.map do |card|
-        TrelloCard.new(card.id, card)
+        TrelloCard.new(card)
       end
     end
 
@@ -45,7 +48,11 @@ module P2t
         if card
           card.pivotal_attributes = pivotal_card.attributes
         else
-          raise "Could not find a card with the Pivotal ID: #{pivotal_card.id}"
+          puts "Could not find a card with the Pivotal ID: #{pivotal_card.id}", @defaults
+
+          card = TrelloCard.new(@client.create(:card, @defaults))
+          card.update_from_pivotal_card(pivotal_card)
+          cards << card
         end
       end
     end
