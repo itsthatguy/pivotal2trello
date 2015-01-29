@@ -1,8 +1,3 @@
-module PivotalTracker
-  class Story
-  end
-end
-
 module P2t
   class PivotalCard < Card
     attr_accessor :attributes

@@ -1,8 +1,3 @@
-module Trello
-  class Card
-  end
-end
-
 module P2t
   class TrelloCard < Card
 
