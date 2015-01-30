@@ -38,7 +38,7 @@ module P2t
     def find_with_pivotal_id(id)
       @cards ||= cards
       @cards.find do |card|
-        card.pivotal_attributes[:id].to_s == id.to_s
+        card.pivotal_id == id.to_s
       end
     end
 
@@ -46,10 +46,11 @@ module P2t
       pivotal_cards.map do |pivotal_card|
         card = find_with_pivotal_id(pivotal_card.id)
         if card
-          card.pivotal_attributes = pivotal_card.attributes
+          puts "Upating card with Pivotal ID: #{pivotal_card.id}", @defaults
+          card.pivotal_attributes = pivotal_card
+          card.update_from_pivotal_card(pivotal_card)
         else
           puts "Could not find a card with the Pivotal ID: #{pivotal_card.id}", @defaults
-
           card = TrelloCard.new(@client.create(:card, @defaults))
           card.update_from_pivotal_card(pivotal_card)
           cards << card

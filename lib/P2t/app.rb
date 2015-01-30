@@ -47,27 +47,6 @@ module P2t
 
     def update_trello_cards
       trello.sync_with_pivotal_cards(pivotal_cards)
-
-      # cards_to_sync = trello_cards.map { |card| pivotal_cards }
-      # puts cards_to_sync
-
-      # cards_to_sync.map do |card|
-      #   story = @pivotal.card_with_id(card.id)
-      #   attributes = {
-      #     name: story.name,
-      #     desc: story.description,
-      #     current_state: story.current_state,
-      #     estimate: story.estimate,
-      #     owned_by: story.owned_by,
-      #     requested_by: story.requested_by,
-      #     story_type: story.story_type,
-      #     labels: story.labels,
-      #     id: id,
-      #     url: story.url
-      #   }
-
-      #   @trello.update_card(id, attributes)
-      # end
     end
   end
 end
