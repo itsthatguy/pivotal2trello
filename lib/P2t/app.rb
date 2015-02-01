@@ -10,9 +10,10 @@ module P2t
   class Application
     attr_accessor :pivotal, :trello
 
-    def initialize
+    def initialize(console = false)
       @pivotal = Pivotal.new(ENV["PIVOTAL_API_TOKEN"], ENV["PIVOTAL_PROJECT_ID"])
       @trello = Trello.new(ENV["TRELLO_DEVELOPER_PUBLIC_KEY"], ENV["TRELLO_MEMBER_TOKEN"])
+      binding.pry if console
     end
 
     def pivotal_cards

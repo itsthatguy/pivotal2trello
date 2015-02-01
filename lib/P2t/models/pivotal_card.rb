@@ -12,6 +12,7 @@ module P2t
                      requested_by: card.requested_by,
                      story_type: card.story_type,
                      labels: card.labels,
+                     current_state: card.current_state,
                      id: id,
                      url: card.url}
     end

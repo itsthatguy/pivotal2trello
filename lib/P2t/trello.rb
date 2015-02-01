@@ -47,7 +47,6 @@ module P2t
         card = find_with_pivotal_id(pivotal_card.id)
         if card
           puts "Upating card with Pivotal ID: #{pivotal_card.id}", @defaults
-          card.pivotal_attributes = pivotal_card
           card.update_from_pivotal_card(pivotal_card)
         else
           puts "Could not find a card with the Pivotal ID: #{pivotal_card.id}", @defaults
