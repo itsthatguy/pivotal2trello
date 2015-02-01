@@ -20,9 +20,19 @@ module P2t
       @cards = @project.stories.all(options)
     end
 
+    def states
+      @cards ||= cards
+      @cards.map { |card| card.current_state }.uniq
+    end
+
     def find_with_id(id)
       @cards ||= cards
-      @cards.find { |card| card.id.to_s == id.to_s }
+      @cards.find { |card| card.pivotal_id.to_s == id.to_s }
+    end
+
+    def find_with_state(state)
+      @cards ||= cards
+      @cards.select { |card| card.current_state == state }
     end
   end
 end

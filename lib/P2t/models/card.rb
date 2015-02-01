@@ -2,9 +2,9 @@ module P2t
   class Card
     attr_accessor :id, :card
 
-    def initialize(id, card)
-      @id = id
+    def initialize(card)
       @card = card
+      @id = card.id
     end
   end
 end
